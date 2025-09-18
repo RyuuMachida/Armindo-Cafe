@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Armindo Cafe - Pemesanan Online</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="imgweb/logowe.jpg" alt="Logo" />
+        <h3>Armindo Cafe</h3>
+      </div>
+      <div class="sidebar-menu">
+        <a
+          href="#"
+          class="menu-item active"
+          data-section="home"
+          data-tooltip="Beranda"
+        >
+          <i class="fas fa-home"></i>
+          <span>Beranda</span>
+        </a>
+        <a
+          href="#"
+          class="menu-item"
+          data-section="menu"
+          data-tooltip="Menu Makanan"
+        >
+          <i class="fas fa-utensils"></i>
+          <span>Menu Makanan</span>
+        </a>
+        <a
+          href="#"
+          class="menu-item"
+          data-section="resto"
+          data-tooltip="Info Resto"
+        >
+          <i class="fas fa-info-circle"></i>
+          <span>Info Resto</span>
+        </a>
+        <a
+          href="#"
+          class="menu-item admin-only"
+          data-section="dashboard"
+          data-tooltip="Dashboard"
+        >
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </a>
+        <a
+          href="#"
+          class="menu-item admin-only"
+          data-section="orders"
+          data-tooltip="Pesanan"
+        >
+          <i class="fas fa-shopping-cart"></i>
+          <span>Pesanan</span>
+        </a>
+        <a
+          href="#"
+          class="menu-item admin-only"
+          data-section="admin"
+          data-tooltip="Admin Panel"
+        >
+          <i class="fas fa-cog"></i>
+          <span>Admin Panel</span>
+        </a>
+        <a
+          href="#"
+          class="menu-item admin-only"
+          data-section="customers"
+          data-tooltip="Pelanggan"
+        >
+          <i class="fas fa-users"></i>
+          <span>Pelanggan</span>
+        </a>
+        <a
+          href="#"
+          class="menu-item admin-only"
+          data-section="reports"
+          data-tooltip="Laporan"
+        >
+          <i class="fas fa-chart-bar"></i>
+          <span>Laporan</span>
+        </a>
+        <a
+          href="#"
+          class="menu-item admin-only"
+          data-section="settings"
+          data-tooltip="Pengaturan"
+        >
+          <i class="fas fa-sliders-h"></i>
+          <span>Pengaturan</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="navbar">
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="page-title" id="pageTitle">Dashboard</div>
+      <div class="navbar-right">
+        <button class="theme-toggle" id="themeToggle">
+          <i class="fas fa-sun"></i>
+        </button>
+        <button class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge" id="notificationBadge">3</span>
+        </button>
+        <div class="user-menu" id="userMenu">
+          <div class="user-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <span id="userName">Guest</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="main-content">
+      <!-- Home/Landing Section -->
+      <div class="content-section active" id="home-section">
+        <div class="hero-section">
+          <div class="hero-content">
+            <div class="hero-text">
+              <img
+                src="imgweb/logowe.jpg"
+                alt="Armindo Cafe Logo"
+                class="hero-logo"
+              />
+              <div class="hero-welcome">
+                <h1>Selamat Datang di Armindo Cafe</h1>
+                <p>Ada yang bisa kami bantu?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <div class="cta-content">
+            <h2>Ingin Memesan?</h2>
+            <p>Pesan sekarang!</p>
+            <button class="cta-button" onclick="goToMenu()">
+              <i class="fas fa-shopping-cart"></i>
+              Lihat Menu
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-section">
+          <div class="container">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">Menu Tersedia</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="783">0</div>
+                <div class="stat-label">Pelanggan Puas</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="3">0</div>
+                <div class="stat-label">Tahun Berpengalaman</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="6">0</div>
+                <div class="stat-label">Jam Buka</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured-menu-section">
+          <div class="container">
+            <div class="section-header">
+              <h2>Menu Favorit Kami</h2>
+              <p>Pilihan terbaik yang paling disukai pelanggan</p>
+            </div>
+            <div class="featured-menu-grid" id="featuredMenuGrid">
+              <!-- diisi sama JavaScript -->
+            </div>
+            <div class="featured-cta">
+              <button class="see-all-btn" onclick="goToMenu()">
+                Lihat Semua Menu <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-section">
+          <div class="container">
+            <div class="section-header">
+              <h2>Apa Kata Pelanggan Kami</h2>
+              <p>
+                Testimoni dari pelanggan yang sudah merasakan kelezatan menu
+                kami
+              </p>
+            </div>
+            <div class="testimonial-slider">
+              <div class="testimonial-card active">
+                <div class="testimonial-content">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <p>
+                    "Makanannya enak banget, terutama rendang dagingnya. Bumbu
+                    rempahnya berasa banget!"
+                  </p>
+                  <div class="testimonial-author">
+                    <div class="author-avatar">S</div>
+                    <div class="author-info">
+                      <div class="author-name">Sari Dewi</div>
+                      <div class="author-role">Pelanggan Setia</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-card active">
+                <div class="testimonial-content">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <p>
+                    "emang cucu ane bagus banget karirnye, lancar terus ye.
+                    makanannye semua enak deh! 100%"
+                  </p>
+                  <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info">
+                      <div class="author-name">Mpok Ati</div>
+                      <div class="author-role">tetangga owner</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Bisa lu tambahin lagi, atau pake server (tapi railway gw abis)-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section active" id="resto-section">
+        <div class="resto-header">
+          <h2><i class="fas fa-info-circle"></i> Tentang Resto</h2>
+          <p>Informasi lengkap mengenai lokasi dan kontak resto kami</p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3><i class="fas fa-map-marker-alt"></i> Alamat Lengkap</h3>
+            <p class="alamat-text">
+              Kami berlokasi strategis di Jl. Mangga Besar VIII No. 15A,
+              Kelurahan Mangga Besar, Kecamatan Sawah Besar, Jakarta Barat
+              11180. Resto kami mudah diakses dengan berbagai transportasi umum
+              dan berada di pusat kuliner Jakarta yang ramai dikunjungi.
+            </p>
+            <a
+              href="https://maps.google.com/?q=Jl.+Mangga+Besar+VIII+No.15A,+Mangga+Besar,+Sawah+Besar,+Jakarta+Barat"
+              target="_blank"
+              class="map-button"
+            >
+              <i class="fas fa-directions"></i> Buka di Google Maps
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h3><i class="fas fa-phone"></i> Kontak & Sosial Media</h3>
+
+            <div class="contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <span>+62 838 1366 0206</span>
+            </div>
+
+            <div class="contact-item">
+              <i class="fas fa-mobile-alt"></i>
+              <span>+62 838 1366 0206</span>
+            </div>
+
+            <div class="social-media">
+              <a
+                href="https://wa.me/6283813660206"
+                target="_blank"
+                class="social-link whatsapp"
+                title="WhatsApp"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+
+              <a
+                href="https://instagram.com/rilss_ear1"
+                target="_blank"
+                class="social-link instagram"
+                title="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+
+              <a
+                href="https://tiktok.com/@rilss_ear1"
+                target="_blank"
+                class="social-link tiktok"
+                title="TikTok"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="map-section">
+            <h3><i class="fas fa-map"></i> Lokasi di Peta</h3>
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.9876543210123!2d106.8349!3d-6.1599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2d75f6c3a8b9c7!2sSawah%20Besar%2C%20Central%20Jakarta%20City%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1694168234567!5m2!1sen!2sid"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Lokasi Resto di Sawah Besar Jakarta"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section active" id="dashboard-section">
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-icon visitors">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="visitorsCount">127</h3>
+              <p>Pengunjung Hari Ini</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon customers">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="customersCount">85</h3>
+              <p>Total Pelanggan</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon profit">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="profitPercent">82%</h3>
+              <p>Rasio Keuntungan</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon transactions">
+              <i class="fas fa-receipt"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="transactionsCount">43</h3>
+              <p>Transaksi Hari Ini</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="recent-orders">
+          <h3><i class="fas fa-clock"></i> Pesanan Terbaru</h3>
+          <div id="recentOrdersList"></div>
+        </div>
+      </div>
+
+      <div class="content-section" id="menu-section">
+        <div class="menu-controls">
+          <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              id="menuSearch"
+              placeholder="Cari nama makanan..."
+              class="search-input"
+            />
+            <button id="clearSearch" class="clear-search" style="display: none">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">
+              <i class="fas fa-th"></i> Semua
+            </button>
+            <button class="filter-btn" data-filter="food">
+              <i class="fas fa-utensils"></i> Makanan
+            </button>
+            <button class="filter-btn" data-filter="drink">
+              <i class="fas fa-coffee"></i> Minuman
+            </button>
+          </div>
+        </div>
+        <div class="menu-grid" id="menuGrid"></div>
+      </div>
+
+      <div class="content-section" id="orders-section">
+        <div class="recent-orders" style="margin-bottom: 30px">
+          <h3><i class="fas fa-clock"></i> Pesanan Menunggu Konfirmasi</h3>
+          <div id="pendingOrdersList"></div>
+        </div>
+
+        <div class="recent-orders">
+          <h3><i class="fas fa-shopping-cart"></i> Semua Pesanan</h3>
+          <div id="allOrdersList"></div>
+        </div>
+      </div>
+
+      <div class="content-section" id="admin-section">
+        <div class="admin-section">
+          <h3><i class="fas fa-plus"></i> Tambah Menu Baru</h3>
+          <form id="addMenuForm">
+            <div class="admin-controls">
+              <div class="control-group">
+                <label>Nama Menu</label>
+                <input type="text" id="menuName" required />
+              </div>
+              <div class="control-group">
+                <label>Harga (Rp)</label>
+                <input type="number" id="menuPrice" required />
+              </div>
+              <div class="control-group">
+                <label>URL Gambar</label>
+                <input type="url" id="menuImage" required />
+              </div>
+              <div class="control-group">
+                <label>Deskripsi</label>
+                <textarea id="menuDescription" rows="3" required></textarea>
+              </div>
+              <div class="control-group">
+                <label>Diskon (%)</label>
+                <input
+                  type="number"
+                  id="menuDiscount"
+                  min="0"
+                  max="90"
+                  value="0"
+                />
+              </div>
+              <br />
+              <div class="control-group">
+                <button type="submit" class="admin-btn success">
+                  Tambah Menu
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="admin-section">
+          <h3><i class="fas fa-percentage"></i> Kelola Diskon Global</h3>
+          <div class="admin-controls">
+            <div class="control-group">
+              <label>Diskon untuk Semua Menu (%)</label>
+              <input
+                type="number"
+                id="globalDiscount"
+                min="0"
+                max="50"
+                value="0"
+              />
+            </div>
+            <br />
+            <div class="control-group">
+              <button
+                type="button"
+                class="admin-btn"
+                onclick="applyGlobalDiscount()"
+              >
+                Terapkan Diskon
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h3><i class="fas fa-bell"></i> Kirim Notifikasi</h3>
+          <div class="admin-controls">
+            <div class="control-group">
+              <label>Jenis Notifikasi</label>
+              <select id="notificationType">
+                <option value="discount">Diskon</option>
+                <option value="success">Pembelian Berhasil</option>
+                <option value="info">Informasi</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Pesan Notifikasi</label>
+              <textarea
+                id="notificationMessage"
+                rows="3"
+                placeholder="Masukkan pesan notifikasi..."
+              ></textarea>
+            </div>
+            <br />
+            <div class="control-group">
+              <button
+                type="button"
+                class="admin-btn success"
+                onclick="sendNotification()"
+              >
+                Kirim Notifikasi
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customers Section -->
+      <div class="content-section" id="customers-section">
+        <div class="recent-orders">
+          <h3><i class="fas fa-users"></i> Data Pelanggan</h3>
+          <div id="customersList"></div>
+        </div>
+      </div>
+
+      <!-- Reports Section -->
+      <div class="content-section" id="reports-section">
+        <div class="admin-section">
+          <h3><i class="fas fa-chart-bar"></i> Laporan Penjualan</h3>
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <div class="stat-icon success">
+                <i class="fas fa-money-bill-wave"></i>
+              </div>
+              <div class="stat-info">
+                <h3 id="totalRevenue">Rp 2,450,000</h3>
+                <p>Total Pendapatan Bulan Ini</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon warning">
+                <i class="fas fa-utensils"></i>
+              </div>
+              <div class="stat-info">
+                <h3 id="totalMenusSold">234</h3>
+                <p>Menu Terjual Bulan Ini</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Section -->
+      <div class="content-section" id="settings-section">
+        <div class="admin-section">
+          <h3><i class="fas fa-sliders-h"></i> Pengaturan Resto</h3>
+          <div class="admin-controls">
+            <div class="control-group">
+              <label>Nama Resto</label>
+              <input type="text" id="restoName" value="Armindo - Cafe" />
+            </div>
+            <div class="control-group">
+              <label>Alamat</label>
+              <textarea id="restoAddress" rows="2">
+Jl.D GG.baru Karang-anyar. JAKARTA📍 </textarea
+              >
+            </div>
+            <div class="control-group">
+              <label>Nomor Telepon</label>
+              <input type="tel" id="restoPhone" value="+62 812-3456-7890" />
+            </div>
+            <div class="control-group">
+              <button type="button" class="admin-btn success">
+                Simpan Pengaturan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3>Keranjang Belanja</h3>
+        <button class="cart-close" id="cartClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-total" id="cartTotal"></div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+      <div class="auth-form">
+        <button class="auth-close" id="authClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <form id="authForm">
+          <h2 id="authTitle">Login</h2>
+          <div class="form-group">
+            <label for="authEmail">Email</label>
+            <input type="email" id="authEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="authPassword">Password</label>
+            <div style="position: relative">
+              <input
+                type="password"
+                id="authPassword"
+                required
+                style="padding-right: 45px"
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                id="passwordToggle"
+                onclick="togglePassword('authPassword', 'passwordToggle')"
+              >
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-group" id="authNameGroup" style="display: none">
+            <label for="authName">Nama Lengkap</label>
+            <input type="text" id="authName" />
+          </div>
+          <button type="submit" class="auth-btn" id="authSubmit">Login</button>
+        </form>
+        <div class="auth-switch">
+          <span id="authSwitchText">Belum punya akun?</span>
+          <a href="#" id="authSwitchLink">Daftar di sini</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Method Modal -->
+    <div class="auth-modal" id="paymentModal">
+      <div class="auth-form" style="max-width: 500px">
+        <button class="auth-close" id="paymentClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2>Pilih Metode Pembayaran</h2>
+        <div
+          id="paymentTotal"
+          style="
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-color);
+          "
+        ></div>
+
+        <div class="payment-methods">
+          <div class="payment-option" onclick="selectPaymentMethod('qris')">
+            <div class="payment-icon">
+              <i class="fas fa-qrcode"></i>
+            </div>
+            <div class="payment-info">
+              <div class="payment-name">QRIS</div>
+              <div class="payment-desc">Scan QR Code untuk bayar</div>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+
+          <div class="payment-option" onclick="selectPaymentMethod('dana')">
+            <div class="payment-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="payment-info">
+              <div class="payment-name">DANA</div>
+              <div class="payment-desc">Transfer via DANA</div>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+
+          <div class="payment-option" onclick="selectPaymentMethod('cash')">
+            <div class="payment-icon">
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <div class="payment-info">
+              <div class="payment-name">Cash</div>
+              <div class="payment-desc">Bayar di kasir</div>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QRIS Payment Modal -->
+    <div class="auth-modal" id="qrisModal">
+      <div class="auth-form" style="max-width: 400px; text-align: center">
+        <button class="auth-close" id="qrisClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2>Pembayaran QRIS</h2>
+        <div
+          id="qrisTotal"
+          style="
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-color);
+          "
+        ></div>
+
+        <div class="qris-container">
+          <img
+            src="imgweb/qris.jpg"
+            alt="QR Code QRIS"
+            style="
+              width: 200px;
+              height: 200px;
+              border: 2px solid #ddd;
+              border-radius: 10px;
+              margin-bottom: 20px;
+            "
+          />
+          <p style="color: var(--text-light); margin-bottom: 20px">
+            Scan QR Code di atas dengan aplikasi e-wallet Anda
+          </p>
+          <div
+            style="
+              background: var(--light-bg);
+              padding: 15px;
+              border-radius: 8px;
+              margin-bottom: 20px;
+            "
+          >
+            <p style="margin: 0; color: var(--text-light); font-weight: 500">
+              Langkah pembayaran:
+            </p>
+            <ol
+              style="
+                text-align: left;
+                color: #7f8c8d;
+                font-size: 14px;
+                margin: 10px 0 0 20px;
+              "
+            >
+              <li>Buka aplikasi e-wallet (GoPay, OVO, DANA, dll)</li>
+              <li>Pilih menu scan QR Code</li>
+              <li>Scan QR Code di atas</li>
+              <li>Konfirmasi pembayaran</li>
+              <li>Upload bukti transfer di bawah</li>
+            </ol>
+          </div>
+
+          <!-- Upload Bukti Transfer -->
+          <div
+            style="
+              background: var(--light-bg);
+              padding: 15px;
+              border-radius: 8px;
+              margin-bottom: 20px;
+            "
+          >
+            <label
+              style="
+                display: block;
+                margin-bottom: 10px;
+                font-weight: 500;
+                color: var(--text-light);
+              "
+            >
+              <i class="fas fa-upload"></i> Upload Bukti Transfer
+            </label>
+            <input
+              type="file"
+              id="qrisProofUpload"
+              accept="image/*"
+              style="
+                width: 100%;
+                padding: 10px;
+                border: 2px dashed #ddd;
+                border-radius: 6px;
+                background: white;
+              "
+            />
+            <p style="font-size: 12px; color: #7f8c8d; margin: 8px 0 0 0">
+              Format: JPG, PNG, maksimal 5MB
+            </p>
+            <div id="qrisProofPreview" style="margin-top: 10px; display: none">
+              <img
+                id="qrisProofImage"
+                style="
+                  max-width: 100%;
+                  height: 150px;
+                  border-radius: 6px;
+                  border: 1px solid #ddd;
+                "
+              />
+            </div>
+          </div>
+
+          <button
+            class="auth-btn"
+            onclick="confirmPayment('qris')"
+            id="qrisPaymentBtn"
+            disabled
+          >
+            <i class="fas fa-check"></i> Sudah Bayar & Upload Bukti
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DANA Payment Modal -->
+    <div class="auth-modal" id="danaModal">
+      <div class="auth-form" style="max-width: 400px; text-align: center">
+        <button class="auth-close" id="danaClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2>Pembayaran DANA</h2>
+        <div
+          id="danaTotal"
+          style="
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-color);
+          "
+        ></div>
+
+        <div class="dana-container">
+          <div
+            style="
+              background: var(--light-bg);
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 20px;
+            "
+          >
+            <i
+              class="fas fa-mobile-alt"
+              style="font-size: 48px; color: #118eea; margin-bottom: 15px"
+            ></i>
+            <h3 style="color: var(--text-light); margin-bottom: 10px">
+              Transfer ke DANA
+            </h3>
+            <div
+              style="
+                background: white;
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 15px;
+              "
+            >
+              <div style="color: #7f8c8d; font-size: 14px; margin-bottom: 5px">
+                Nomor DANA:
+              </div>
+              <div
+                style="
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: var(--text-light);
+                "
+              >
+                +62 838 1366 0206
+              </div>
+            </div>
+            <button
+              class="auth-btn"
+              style="background: #118eea; margin-bottom: 15px"
+              onclick="openDANATransfer()"
+            >
+              <i class="fab fa-whatsapp"></i> Buka DANA
+            </button>
+          </div>
+
+          <div
+            style="
+              background: var(--light-bg);
+              padding: 15px;
+              border-radius: 8px;
+              margin-bottom: 20px;
+            "
+          >
+            <p style="margin: 0; color: var(--text-light); font-weight: 500">
+              Langkah pembayaran:
+            </p>
+            <ol
+              style="
+                text-align: left;
+                color: #7f8c8d;
+                font-size: 14px;
+                margin: 10px 0 0 20px;
+              "
+            >
+              <li>Buka aplikasi DANA</li>
+              <li>Pilih menu "Transfer"</li>
+              <li>Masukkan nomor: +62 838 1366 0206</li>
+              <li>Masukkan nominal sesuai total</li>
+              <li>Konfirmasi transfer</li>
+              <li>Klik "Sudah Bayar" di bawah setelah berhasil</li>
+            </ol>
+          </div>
+          <button class="auth-btn" onclick="confirmPayment('dana')">
+            <i class="fas fa-check"></i> Sudah Bayar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cash Payment Modal -->
+    <div class="auth-modal" id="cashModal">
+      <div class="auth-form" style="max-width: 400px; text-align: center">
+        <button class="auth-close" id="cashClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2>Pembayaran Cash</h2>
+        <div
+          id="cashTotal"
+          style="
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-color);
+          "
+        ></div>
+
+        <div class="cash-container">
+          <div
+            style="
+              background: var(--light-bg);
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 20px;
+            "
+          >
+            <i
+              class="fas fa-store"
+              style="
+                font-size: 48px;
+                color: var(--success-color);
+                margin-bottom: 15px;
+              "
+            ></i>
+            <h3 style="color: var(--text-light); margin-bottom: 15px">
+              Silahkan Bayar di Kasir
+            </h3>
+            <p style="color: #7f8c8d; line-height: 1.6">
+              Tunjukkan struk pesanan ini ke kasir dan lakukan pembayaran tunai
+              sesuai total yang tertera.
+            </p>
+          </div>
+          <button class="auth-btn" onclick="confirmPayment('cash')">
+            <i class="fas fa-receipt"></i> Buat Struk Pesanan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="auth-modal" id="receiptModal">
+      <div class="auth-form" style="max-width: 450px">
+        <button class="auth-close" id="receiptClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="receipt-container">
+          <div
+            class="receipt-header"
+            style="
+              text-align: center;
+              border-bottom: 2px dashed #ddd;
+              padding-bottom: 20px;
+              margin-bottom: 20px;
+            "
+          >
+            <img
+              src="imgweb/logowe.jpg"
+              alt="Logo"
+              style="
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+              "
+            />
+            <h2 style="margin: 0; color: var(--text-light)">ARMINDO CAFE</h2>
+            <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 14px">
+              Jl. Mangga Besar VIII No. 15A
+            </p>
+            <p style="margin: 0; color: #7f8c8d; font-size: 14px">
+              Jakarta Barat
+            </p>
+          </div>
+
+          <div id="receiptContent"></div>
+
+          <div style="text-align: center; margin-top: 20px">
+            <button class="auth-btn" onclick="printReceipt()">
+              <i class="fas fa-print"></i> Cetak Struk
+            </button>
+            <button
+              class="auth-btn"
+              style="background: var(--success-color); margin-left: 10px"
+              onclick="closeReceiptModal()"
+            >
+              <i class="fas fa-check"></i> Selesai
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
